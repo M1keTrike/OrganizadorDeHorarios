@@ -7,7 +7,7 @@ public class Principal {
     int eleccion;
     Scanner entrada = new Scanner(System.in);
 
-    public void main(String[] args) { 
+    public  void main(String[] args) { 
        seleccionarPerfil();
         
         
