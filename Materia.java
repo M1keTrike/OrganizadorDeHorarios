@@ -4,10 +4,10 @@ public class Materia {
     private int dia;
     private String nombre;
     
-    public Maestro getObjMaestro() {
+    public Maestro getMaestro() {
         return objMaestro;
     }
-    public void setObjMaestro(Maestro objMaestro) {
+    public void asignarMaestro(Maestro objMaestro) {
         this.objMaestro = objMaestro;
     }
     public int getHora() {

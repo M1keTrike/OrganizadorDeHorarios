@@ -20,7 +20,7 @@ public class Horario {
     public ArrayList<Materia> getMaterias() {
         return materias;
     }
-    public void setMaterias(ArrayList<Materia> materias) {
-        this.materias = materias;
+    public void addMaterias(Materia materia) {
+        this.materias.add(materia);
     }
 }

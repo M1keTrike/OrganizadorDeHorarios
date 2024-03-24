@@ -15,13 +15,21 @@ public abstract class Perfil {
                 System.out.println("Ingrese su contrasena");
                 contrasena = entrada.nextLine();
                 
-                entrada.nextLine();
-            }while(this.contrasena != contrasena);
-            
+                
+        }while(this.contrasena == contrasena);
+        this.verFunciones(); 
     }
 
     public String getNombreUsuario(){
         return this.nombreUsuario;
+    }
+
+    public void setHorarios(ArrayList<Horario> horarios) {
+        this.horarios = horarios;
+    }
+
+    public ArrayList<Horario> getHorarios() {
+        return horarios;
     }
 
     public void verFunciones(){}
