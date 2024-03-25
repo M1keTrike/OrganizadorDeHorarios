@@ -3,6 +3,10 @@ public class Materia {
     private int hora;
     private int dia;
     private String nombre;
+
+    public Materia(){}
+    
+
     
     public Maestro getMaestro() {
         return objMaestro;
