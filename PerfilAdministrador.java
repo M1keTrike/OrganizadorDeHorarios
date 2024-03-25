@@ -25,25 +25,27 @@ public class PerfilAdministrador extends Perfil {
         String dias[] = {"Lunes","Martes","Miercoles","Jueves","Viernes"};
         String modulos[] = {"7:00-7:50","7:50-8:40","8:40-9:30","10:00-10:50","10:50-11:40","11:40-12:30","12:30-13:20","13:20-14:10"};
 
-        System.out.println("INDICES");
+        System.out.println("-------------------INDICES----------------");
 
-        for(int i=0;i<5;i++){
-            System.err.println(i+1 + " " + dias[i]);
+        System.out.println("Dias:");
+        for(int i=0;i<dias.length ;i++){
+            System.err.print(i+1 + " " + dias[i] + "\t");
         }
-
-        for(int i=0;i<7;i++){
-            System.err.println(i+1 + " " + modulos[i]);
+        System.out.println("");
+        System.out.println("Horas:");
+        for(int i=0;i<modulos.length;i++){
+            System.err.println(i+1 + " " + modulos[i] + "\t");
         }
 
         
         Scanner entrada = new Scanner(System.in);
         System.out.println("Ingrese los datos de la nueva materia(Guiese por los indices anteriores)");
-        System.out.println("Nombre:");
+        System.out.print("Nombre:");
         nuevaMateria.setNombre(entrada.nextLine());
 
         entrada.nextLine();
 
-        System.out.println("Ingrese el dia(indice) de la materia");
+        System.out.println("Ingrese el dia (por indice) de la materia");
         nuevaMateria.setDia(entrada.nextInt());
 
         entrada.nextLine();
@@ -259,7 +261,9 @@ public class PerfilAdministrador extends Perfil {
     public void verFunciones(){
         Scanner entrada = new Scanner(System.in);
         int eleccion;
-        System.out.println("Seleccione la accion 1.Alta materia 2.Cargar Horario 3.Modificar horario 4.Eliminar horario 5.Modificar materia 6.Eliminar materia (otro numero).Salir");
+        System.out.println("---------------------Seleccione la accion-------------------------- ");
+        System.out.println("");
+        System.out.println("1.Alta materia\t 2.Cargar Horario\t 3.Modificar horario\t 4.Eliminar horario\t 5.Modificar materia \t6.Eliminar materia\t (otro numero).Salir\t");
         eleccion = entrada.nextInt();
         switch (eleccion) {
             case 1:

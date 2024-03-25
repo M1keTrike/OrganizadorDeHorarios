@@ -12,10 +12,8 @@ public abstract class Perfil {
         Scanner entrada = new Scanner(System.in);
             
         do{
-                System.out.println("Ingrese su contrasena");
+                System.out.print("Ingrese su contrasena:");
                 contrasena = entrada.nextLine();
-                
-                
         }while(this.contrasena == contrasena);
         this.verFunciones(); 
     }
@@ -31,7 +29,6 @@ public abstract class Perfil {
     public ArrayList<Horario> getHorarios() {
         return horarios;
     }
-
     public void verFunciones(){}
 
     

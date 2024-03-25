@@ -32,7 +32,7 @@ public class Principal {
             case 1:
                 String nombreIngresado;
                 entrada.nextLine();
-                System.out.println("Ingrese el nombre del usuario");
+                System.out.print("Ingrese el nombre del usuario: ");
                 nombreIngresado = entrada.nextLine();
                 for (Perfil perfil : perfiles) {
                     if (nombreIngresado.equals(perfil.getNombreUsuario())) {
