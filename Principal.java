@@ -36,8 +36,10 @@ public class Principal {
                 nombreIngresado = entrada.nextLine();
                 for (Perfil perfil : perfiles) {
                     if (nombreIngresado.equals(perfil.getNombreUsuario())) {
-                        perfil.iniciarSesion();
+                        perfil.iniciarSesion(perfil.getContrasena());
                         break; 
+                    }else{
+                        System.out.println("\nusuario no encontrado\n");
                     }
                 }
                 break;

@@ -7,15 +7,14 @@ public abstract class Perfil {
     protected String nombreUsuario;
     protected ArrayList<Horario> horarios;
 
-    public void iniciarSesion(){
-        String contrasena;
+    public void iniciarSesion(String contrasenaUs){
+        String contrasena1;
         Scanner entrada = new Scanner(System.in);
-            
         do{
-                System.out.print("Ingrese su contrasena:");
-                contrasena = entrada.nextLine();
-        }while(this.contrasena == contrasena);
-        this.verFunciones(); 
+            System.out.print("Ingrese su contrasena:");
+            contrasena1 = entrada.nextLine();
+        }while(!contrasenaUs.equals(contrasena1));
+        this.verFunciones();
     }
 
     public String getNombreUsuario(){
@@ -31,5 +30,8 @@ public abstract class Perfil {
     }
     public void verFunciones(){}
 
+    public String getContrasena() {
+        return contrasena;
+    }
     
 }
