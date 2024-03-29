@@ -200,6 +200,9 @@ public class PerfilAdministrador extends Perfil {
     }
 
     public void modificarMaterias(){
+        String dias[] = {"Lunes","Martes","Miercoles","Jueves","Viernes"};
+        String modulos[] = {"7:00-7:50","7:50-8:40","8:40-9:30","10:00-10:50","10:50-11:40","11:40-12:30","12:30-13:20","13:20-14:10"};
+
         if (this.listaMaterias.isEmpty()) {
             System.out.println("No hay materias a modificar, cree una e intentelo de nuevo");
         } else{
@@ -216,18 +219,61 @@ public class PerfilAdministrador extends Perfil {
             nombre = entrada.nextLine();
             for(Materia materia: this.listaMaterias){
                 if(nombre.equals(materia.getNombre())){
-                Materia aux = materia;
-                this.darDeAltaMateria(aux);
-    
-                entrada.nextLine();
-                System.out.println("Actualizar materia?: 1.Si 2.No");
-                eleccion = entrada.nextInt();
-                if (eleccion == 1) {
-                    materia = aux;
-                    this.listaMaterias.remove(aux);
-                } else {
-                    this.listaMaterias.remove(aux);
-                }
+                    System.out.println("Cual es el dato a modificar de la materia: " + materia.getNombre());
+                    System.out.println("");
+                    System.out.println("1.Nombre \t 2.Hora \t 3.Dia \t 4.Maestro \t (Otro numero).Salir");
+                    eleccion = entrada.nextInt();
+                    
+                    entrada.nextLine();
+
+                    switch (eleccion) {
+                        case 1:
+                            String nuevoNombre;
+                            System.out.println("Nombre actual: " + materia.getNombre());
+                            System.out.println("Nuevo nombre: ");
+                            nuevoNombre = entrada.nextLine();
+                            materia.setNombre(nuevoNombre);
+                            break;
+                        case 2:
+                            int nuevaHora;
+                        System.out.println("Escriba la hora por los indices siguientes: ");
+                            for(int i=0;i<modulos.length;i++){
+                                System.out.println(i+1 + "\t" + modulos[i]);
+                            }
+                            System.out.println("Hora actual: " + materia.getHora());
+                            System.out.println("Nueva hora: ");
+                            nuevaHora = entrada.nextInt();
+                            materia.setHora(nuevaHora);
+                            break;
+                        case 3:
+                            int nuevoDia;
+                            System.out.println("Escriba el dia por los indices siguientes: ");
+                            for(int i=0;i<dias.length;i++){
+                                System.out.println(i+1 + "\t" + dias[i]);
+                            }
+                            System.out.println("Dia actual: " + materia.getDia());
+                            System.out.println("Nuevo dia: ");
+                            nuevoDia = entrada.nextInt();
+                            materia.setDia(nuevoDia);
+                            break;
+                        case 4:
+                            int nuevoIdM;
+                            String nuevoNombreM;
+                            System.out.println("Datos actuales del maestro: ");
+                            System.out.println("Nombre: " + materia.getMaestro().getNombre());
+                            System.out.println("Id: " + materia.getMaestro().getId());
+                            System.out.println("Ingrese los nuevos datos del maestro");
+                            System.out.println("Nombre: ");
+                            nuevoNombreM = entrada.nextLine();
+                            materia.getMaestro().setNombre(nuevoNombreM);
+                            System.out.println("Id: ");
+                            nuevoIdM = entrada.nextInt();
+                            materia.getMaestro().setId(nuevoIdM);
+                            break;
+                    
+                        default:
+                            break;
+                    }
                 }
             }
         }
