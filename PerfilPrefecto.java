@@ -14,22 +14,26 @@ public class PerfilPrefecto extends Perfil{
     public void verHorario(){
         Scanner entrada = new Scanner(System.in);
         String seleccion;
+
         System.out.println("Escriba el nombre del horario a visualizar");
-        for(Horario elemento  : this.horarios){
-            System.out.println(elemento.getGrupo());
-        }
-
-        seleccion = entrada.nextLine();
-
-        for(Horario elemento  : this.horarios){
-            if(elemento.getGrupo().equals(seleccion)){
+        if(horarios.isEmpty()){
+            System.out.println("la lista de horarios esta vacio");
+        }else{
+            for(Horario elemento  : this.horarios){
                 System.out.println(elemento.getGrupo());
-                System.out.println(elemento.getGeneracion());
-                for(Materia materia : elemento.getMaterias()){
-                    System.out.println(materia.getNombre() + " " + materia.getDia() + " " + materia.getHora());
+            }
+            seleccion = entrada.nextLine();
+            for(Horario elemento  : this.horarios){
+                if(elemento.getGrupo().equals(seleccion)){
+                    System.out.println(elemento.getGrupo());
+                    System.out.println(elemento.getGeneracion());
+                    for(Materia materia : elemento.getMaterias()){
+                        System.out.println(materia.getNombre() + " " + materia.getDia() + " " + materia.getHora());
+                    }
                 }
             }
         }
+
 
 
     }
