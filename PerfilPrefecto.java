@@ -15,9 +15,9 @@ public class PerfilPrefecto extends Perfil{
         Scanner entrada = new Scanner(System.in);
         String seleccion;
         System.out.println("Escriba el nombre del horario a visualizar");
-        for(Horario elemento  : this.horarios){
+        /*for(Horario elemento  : this.horarios){
             System.out.println(elemento.getGrupo());
-        }
+        }*/
 
         seleccion = entrada.nextLine();
 

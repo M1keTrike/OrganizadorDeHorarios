@@ -38,8 +38,6 @@ public class Principal {
                     if (nombreIngresado.equals(perfil.getNombreUsuario())) {
                         perfil.iniciarSesion(perfil.getContrasena());
                         break; 
-                    }else{
-                        System.out.println("\nusuario no encontrado\n");
                     }
                 }
                 break;
@@ -88,6 +86,8 @@ public class Principal {
                 nuevoPerfil.setHorarios(perfiles.get(0).getHorarios());
             }
             else{
+                System.out.println("");
+                System.out.println("MUCHO OJO");
                 System.out.println("Cree un usuario ADMINISTRADOR para cargar horarios y poder verlos en esta seccion.");
             }
             
