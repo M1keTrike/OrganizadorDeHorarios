@@ -82,22 +82,22 @@ public class PerfilAdministrador extends Perfil {
         } else {
             Scanner entrada = new Scanner(System.in);
             
-            System.out.println("Ingrese los datos del nuevo horario");
+            System.out.println("\nIngrese los datos del nuevo horario:\n");
         
-            System.out.println("Grupo");
+            System.out.println("\nGrupo:\n");
             nuevoHorario.setGrupo(entrada.nextLine());
 
             entrada.nextLine();
 
-            System.out.println("Generacion:");
+            System.out.println("\nGeneracion:\n");
             nuevoHorario.setGeneracion(entrada.nextLine());
 
             entrada.nextLine();
 
-            System.out.println("Ingrese las materias");
+            System.out.println("\nIngrese las materias:\n");
 
             
-            ArrayList<Materia> aux = this.listaMaterias;
+            ArrayList<Materia> auxMaterias = this.listaMaterias;
             int continuar;
             do{ 
                 entrada.nextLine();
