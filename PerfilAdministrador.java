@@ -8,6 +8,7 @@ public class PerfilAdministrador extends Perfil {
     public PerfilAdministrador(String nombreU,String contrasenaU){
         this.contrasena = contrasenaU;
         this.nombreUsuario = nombreU;
+        this.horarios = new ArrayList<>();
     }
 
     public ArrayList<Materia> getListaMaterias() {
@@ -50,6 +51,7 @@ public class PerfilAdministrador extends Perfil {
     public void cargarHorario(){
         if (this.listaMaterias.isEmpty()) {
             System.out.println("No hay materias para asiganar al horario, cree una e intentelo de nuevo");
+            this.verFunciones();
         } else {
             String dias[] = {"Lunes","Martes","Miercoles","Jueves","Viernes"};
             String modulos[] = {"7:00-7:50","7:50-8:40","8:40-9:30","10:00-10:50","10:50-11:40","11:40-12:30","12:30-13:20","13:20-14:10"};
@@ -115,7 +117,7 @@ public class PerfilAdministrador extends Perfil {
     }
 
     public void modificarHorario(){
-        if (this.horarios == null) {
+        if (this.horarios.isEmpty()) {
             System.out.println("No hay horarios para modificar, cree uno e intentelo de nuevo");
             this.verFunciones();
         } else{
@@ -212,8 +214,9 @@ public class PerfilAdministrador extends Perfil {
         Scanner entrada = new Scanner(System.in);
         String nombre;
         int confirmacion;
-        if (this.horarios == null) {
+        if (this.horarios.isEmpty()) {
             System.out.println("No hay horarios a eliminar");
+            this.verFunciones();
         } else {
             System.out.println("Escriba el grupo del horario a eliminar");
             for(Horario horario : this.horarios){

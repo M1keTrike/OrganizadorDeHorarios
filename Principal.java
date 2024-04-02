@@ -10,7 +10,7 @@ public class Principal {
         int eleccion;
         do{
             seleccionarPerfil();
-            System.out.println("Desea salir  1.Si\t 2.No \t");
+            System.out.println("Desea salir  1.Si(Esta accion limpiara la memoria y se perderan los horarios)\t 2.No \t");
             eleccion = entrada.nextInt();
         }while(eleccion == 2);
         
