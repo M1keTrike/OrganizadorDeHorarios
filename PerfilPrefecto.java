@@ -14,7 +14,9 @@ public class PerfilPrefecto extends Perfil{
     public void verHorario(){
         Scanner entrada = new Scanner(System.in);
         String seleccion;
-
+        Materia[][] aux ;
+        String dias[] = {"Lunes","Martes","Miercoles","Jueves","Viernes"};
+        String modulos[] = {"7:00-7:50","7:50-8:40","8:40-9:30","10:00-10:50","10:50-11:40","11:40-12:30","12:30-13:20","13:20-14:10"};
         System.out.println("Escriba el nombre del horario a visualizar");
         if(horarios.isEmpty()){
             System.out.println("la lista de horarios esta vacio");
@@ -27,8 +29,13 @@ public class PerfilPrefecto extends Perfil{
                 if(elemento.getGrupo().equals(seleccion)){
                     System.out.println(elemento.getGrupo());
                     System.out.println(elemento.getGeneracion());
-                    for(Materia materia : elemento.getMaterias()){
-                        System.out.println(materia.getNombre() + " " + materia.getDia() + " " + materia.getHora());
+                    aux = elemento.getMaterias();
+                    for (int i = 0; i < 5; i++) {
+                        System.out.println(dias[i]);
+                        for (int j = 0; j < 8; j++) {
+                            System.out.println(modulos[j]);
+                            System.out.println(aux[i][j].getNombre() + "\t");
+                        }
                     }
                 }
             }
@@ -96,7 +103,7 @@ public class PerfilPrefecto extends Perfil{
 
         System.out.println(horarioVisualizar.getGrupo());
         String diaDisplay,horaDisplay;
-        for(Materia materia : horarioVisualizar.getMaterias()){
+        for (int i = 0; i < 8; i++) {
             if (materia.getHora() == horaTReal && materia.getDia() == diaTReal) {
                 System.out.println(materia.getNombre());
                 diaDisplay = dias[materia.getDia()];
@@ -104,6 +111,9 @@ public class PerfilPrefecto extends Perfil{
                 System.out.println(diaDisplay);
                 System.out.println(horaDisplay);
             }
+        }
+        for(Materia materia : horarioVisualizar.getMaterias()){
+            
         }
         System.out.println("1.Hora siguinete 2.Hora anterior 3.Dia siguiente 4.Dia anterior (Otro numero).Salir");
         controles = entrada.nextInt();

@@ -73,57 +73,58 @@ public class PerfilAdministrador extends Perfil {
         this.listaMaterias.add(nuevaMateria);
     }
 
-    public void cargarHorario(Horario nuevoHorario){
-        if (nuevoHorario == null) {
-            nuevoHorario = new Horario();
-        }
+    public void cargarHorario(){
         if (this.listaMaterias.isEmpty()) {
             System.out.println("No hay materias para asiganar al horario, cree una e intentelo de nuevo");
         } else {
             Scanner entrada = new Scanner(System.in);
-            
+            Horario objHorario = new Horario();
+
             System.out.println("\nIngrese los datos del nuevo horario:\n");
-        
+            
             System.out.println("\nGrupo:\n");
-            nuevoHorario.setGrupo(entrada.nextLine());
+            
+            objHorario.setGrupo(entrada.nextLine());
 
             entrada.nextLine();
 
             System.out.println("\nGeneracion:\n");
-            nuevoHorario.setGeneracion(entrada.nextLine());
+            objHorario.setGeneracion(entrada.nextLine());
 
             entrada.nextLine();
 
             System.out.println("\nIngrese las materias:\n");
 
-            
-            ArrayList<Materia> auxMaterias = this.listaMaterias;
+            for (Materia materia : this.listaMaterias) {
+                System.out.println(materia.getNombre());
+            }
             int continuar;
-            do{ 
-                entrada.nextLine();
-                
-                String nombre;
-                
-                for(Materia materia : aux){
-                    System.out.println(materia.getNombre());
+            for (int i = 0; i < 5; i++) {
+                for (int j = 0; j < 8; j++) {
+                    do{ 
+                        entrada.nextLine();
+                        
+                        String nombre;
+
+                        System.out.println("Escriba el nombre de la materia que quiere agregar al horario");
+                        nombre = entrada.nextLine();
+                        
+
+                        for(Materia materia : this.listaMaterias){
+                            if (nombre.equals(materia.getNombre())) {
+                                objHorario.getMaterias()
+                            }
+                        }
+                        
+                        entrada.nextLine();
+
+                        System.out.println("Quiere agregar otra materia?: 1.Si 2.No");
+                        continuar = entrada.nextInt();
+                    }while(continuar == 1);
                 }
-
-                System.out.println("Escriba el nombre de la materia que quiere agregar al horario");
-                nombre = entrada.nextLine();
-                
-
-                for(Materia materia : aux){
-                    if (nombre.equals(materia.getNombre())) {
-                        nuevoHorario.addMaterias(materia);
-                    }
-                    aux.remove(materia);
-                }
-                
-                entrada.nextLine();
-
-                System.out.println("Quiere agregar otra materia?: 1.Si 2.No");
-                continuar = entrada.nextInt();
-            }while(continuar == 1);
+            }
+            
+            
 
         }
         
@@ -154,7 +155,7 @@ public class PerfilAdministrador extends Perfil {
                         System.out.println("Dia: " + materia.getDia() + "Hora: " + materia.getHora());
                     }
                     Horario aux = horario;
-                    this.cargarHorario(aux);
+                    this.cargarHorario();
 
                     entrada.nextLine();
                     int eleccion;
@@ -316,7 +317,7 @@ public class PerfilAdministrador extends Perfil {
                 this.darDeAltaMateria(null);
                 break;
             case 2:
-                this.cargarHorario(null);
+                this.cargarHorario();
                 break;
             case 3:
                 this.modificarHorario();
