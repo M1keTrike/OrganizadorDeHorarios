@@ -17,10 +17,10 @@ public class PerfilPrefecto extends Perfil{
         Materia[][] aux ;
         String dias[] = {"Lunes","Martes","Miercoles","Jueves","Viernes"};
         String modulos[] = {"7:00-7:50","7:50-8:40","8:40-9:30","10:00-10:50","10:50-11:40","11:40-12:30","12:30-13:20","13:20-14:10"};
-        System.out.println("Escriba el nombre del horario a visualizar");
         if(horarios.isEmpty()){
-            System.out.println("la lista de horarios esta vacio");
+            System.out.println("la lista de horarios esta vacia");
         }else{
+            System.out.println("Escriba el nombre del horario a visualizar: ");
             for(Horario elemento  : this.horarios){
                 System.out.println(elemento.getGrupo());
             }
@@ -34,7 +34,7 @@ public class PerfilPrefecto extends Perfil{
                         System.out.println(dias[i]);
                         for (int j = 0; j < 8; j++) {
                             System.out.println(modulos[j]);
-                            System.out.println(aux[i][j].getNombre() + "\t");
+                            System.out.println(aux[i][j].getNombre() + "\t" + "Maestro: " + aux[i][j].getMaestro().getNombre());
                         }
                     }
                 }

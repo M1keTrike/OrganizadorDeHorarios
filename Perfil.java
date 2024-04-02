@@ -28,7 +28,7 @@ public abstract class Perfil {
     public ArrayList<Horario> getHorarios() {
         return horarios;
     }
-    public void verFunciones(){}
+    public abstract void verFunciones();
 
     public String getContrasena() {
         return contrasena;

@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+
 public class Horario {
     private String generacion;
     private String Grupo;
@@ -21,6 +21,10 @@ public class Horario {
     }
     public Materia[][] getMaterias() {
         return materias;
+    }
+
+    public void setMaterias(Materia[][] materias) {
+        this.materias = materias;
     }
     
     

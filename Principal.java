@@ -10,9 +10,9 @@ public class Principal {
         int eleccion;
         do{
             seleccionarPerfil();
-            System.out.println("Desea regresar  1.Si\t 2.No \t");
+            System.out.println("Desea salir  1.Si\t 2.No \t");
             eleccion = entrada.nextInt();
-        }while(eleccion == 1);
+        }while(eleccion == 2);
         
     }
 
@@ -42,7 +42,7 @@ public class Principal {
                     }
                 }
                 if (NoEncontrado) {
-                    System.out.println("\nusuario no encontrado\n");
+                    System.out.println("\nUsuario no encontrado\n");
                 }
                 
                 break;
@@ -98,7 +98,7 @@ public class Principal {
             System.out.println("Escriba el nombre del administador, guiese por la siguiente lista de administradores: \n\n");
             for(Perfil perfil: perfiles){
                 if (perfil instanceof PerfilAdministrador) {
-                    System.out.println(perfil.getNombreUsuario());
+                    System.out.println("\t" + perfil.getNombreUsuario());
                 }
             }
             aux = entrada.nextLine();
@@ -116,6 +116,7 @@ public class Principal {
         }
 
         perfiles.add(nuevoPerfil);
+        seleccionarPerfil();
     }
 
     
