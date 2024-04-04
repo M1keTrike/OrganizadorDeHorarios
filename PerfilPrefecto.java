@@ -77,7 +77,7 @@ public class PerfilPrefecto extends Perfil{
             if (encontrado) {
                 int eleccion;
                 System.out.println("No se encontro un horario con ese nombre, desea regresar al menu anterior? 1.Si 2.No");
-                eleccion = entrada.nextInt();
+                eleccion = this.decidir();
                 if (eleccion == 1) {
                     this.verFunciones();
                 }
@@ -97,9 +97,10 @@ public class PerfilPrefecto extends Perfil{
         if (hora.isAfter(horaInicio) && hora.isBefore(horaFin)) {
             String horas[] = {"7:00","7:50","8:40","10:00","10:50","11:40","12:30","13:20"};
             boolean flag = true;
+            LocalTime horaComparar;
 
             for(int i = 0; i<8 && flag; i++){
-                LocalTime horaComparar = LocalTime.parse(horas[i], DateTimeFormatter.ofPattern("H:mm"));
+                 horaComparar = LocalTime.parse(horas[i], DateTimeFormatter.ofPattern("H:mm"));
                 if(hora.isAfter(horaComparar)){
                     horaTReal = i;
                     flag = false;
@@ -120,7 +121,7 @@ public class PerfilPrefecto extends Perfil{
         
     }
 
-    public static void mostrarMateria(String nombre,Materia[][] auxMaterias,int horaTReal, int diaTReal){
+    public void mostrarMateria(String nombre,Materia[][] auxMaterias,int horaTReal, int diaTReal){
         Scanner entrada = new Scanner(System.in);
         String dias[] = {"Lunes","Martes","Miercoles","Jueves","Viernes"};
         String modulos[] = {"7:00-7:50","7:50-8:40","8:40-9:30","10:00-10:50","10:50-11:40","11:40-12:30","12:30-13:20","13:20-14:10"};
@@ -140,7 +141,8 @@ public class PerfilPrefecto extends Perfil{
         }
         
         System.out.println("1.Hora siguiente 2.Hora anterior 3.Dia siguiente 4.Dia anterior (Otro numero).Salir");
-        controles = entrada.nextInt();
+
+        controles = this.decidir();
         switch (controles) {
             case 1:
                 horaTReal ++;
@@ -181,7 +183,7 @@ public class PerfilPrefecto extends Perfil{
         Scanner entrada = new Scanner(System.in);
         int eleccion;
         System.out.println("Seleccione la accion 1.Ver Horarios 2.Ver interfaz especial 3.Salir");
-        eleccion = entrada.nextInt();
+        eleccion = this.decidir();
         if (eleccion == 1) {
             this.verHorario();
         } else if (eleccion == 2) {

@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.InputMismatchException;;
 
 public abstract class Perfil {
 
@@ -32,6 +33,31 @@ public abstract class Perfil {
     public String getContrasena() {
         return contrasena;
     }
+    
+    public int decidir(){
+        int indice = 0;
+        boolean excepcion = true;
+        do{
+            try{
+                System.out.println("Numero: ");
+                indice = validarEleccion();
+                excepcion = false;
+            }catch(InputMismatchException e){
+                System.out.println("Introduzca un numero entero");
+            }
+            
+        }while(excepcion);
+        
+        return indice;
+       
+    } 
+
+    public int validarEleccion() throws InputMismatchException{
+        Scanner entrada = new Scanner(System.in);
+        int eleccion = entrada.nextInt();
+        return eleccion;
+    }
+
 
     public abstract void verFunciones();
     

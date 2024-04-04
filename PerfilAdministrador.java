@@ -9,6 +9,13 @@ public class PerfilAdministrador extends Perfil {
         this.contrasena = contrasenaU;
         this.nombreUsuario = nombreU;
         this.horarios = new ArrayList<>();
+        Materia materiaDefault = new Materia();
+        materiaDefault.setNombre("moduloLibre");
+        Maestro nulo = new Maestro();
+        nulo.setNombre(".");
+        nulo.setId(0);
+        materiaDefault.asignarMaestro(nulo);
+        listaMaterias.add(materiaDefault);
     }
 
     public ArrayList<Materia> getListaMaterias() {
@@ -37,7 +44,7 @@ public class PerfilAdministrador extends Perfil {
         entrada.nextLine();
 
         System.err.println("Id:");
-        nuevoMaestro.setId(entrada.nextInt());
+        nuevoMaestro.setId(this.decidir());
 
         entrada.nextLine();
 
@@ -77,13 +84,14 @@ public class PerfilAdministrador extends Perfil {
             for (Materia materia : this.listaMaterias) {
                 System.out.println(materia.getNombre());
             }
-            System.out.println("moduloLibre");
+            
 
             Materia[][] auxHorario = objHorario.getMaterias();
-            boolean encontrado = true;
+            boolean encontrado;
             
             for (int i = 0; i < 5; i++) {
                 for (int j = 0; j < 8; j++) {
+                    encontrado = true;
                     do{
                         System.out.println("Escriba la materia para el dia: " + dias[i] + " en la hora: " + modulos[j] + ": ");
                         busqueda = entrada.nextLine();
@@ -91,12 +99,6 @@ public class PerfilAdministrador extends Perfil {
                             if (materia.getNombre().equals(busqueda)) {
                                 encontrado = false;
                                 auxHorario[i][j] = materia;
-                            }
-                            if(busqueda.equals("moduloLibre")){
-                                Materia moduloLibre = new Materia();
-                                moduloLibre.setNombre("moduloLibre");
-                                auxHorario[i][j] = moduloLibre;
-                                encontrado = false;
                             }
                         }
                         if (encontrado) {
@@ -152,7 +154,7 @@ public class PerfilAdministrador extends Perfil {
 
                     System.out.println("Que datos desea modificar 1.Nombre \t 2.Generacion \t 3.Modificar Materia \t 4.Salir");
 
-                    eleccion = entrada.nextInt();
+                    eleccion = this.decidir();
 
                     switch (eleccion) {
                         case 1:
@@ -175,12 +177,12 @@ public class PerfilAdministrador extends Perfil {
                                 for (int i = 0; i < dias.length; i++) {
                                     System.out.println(i + dias[i]);
                                 }
-                                auxDia = entrada.nextInt();
+                                auxDia = this.decidir();
                                 System.out.println("Ingrese el indice de la hora de la materia a modificar");
                                 for (int i = 0; i < dias.length; i++) {
                                     System.out.println(i + modulos[i]);
                                 }
-                                auxHora = entrada.nextInt();
+                                auxHora = this.decidir();
                             }while(auxDia <= 0 || auxDia > 5 || auxHora <= 0 || auxHora > 8);
                             System.out.println("Cual sera la materia que reemplazara el lugar del dia " + dias[auxDia] + "a la hora " + modulos[auxHora] + "?: ");
                             
@@ -227,7 +229,7 @@ public class PerfilAdministrador extends Perfil {
             for(Horario horario : this.horarios){
                 if (nombre.equals(horario.getGrupo())) {
                     System.out.println("Estas seguro de eliminar el horario nombrado: " + horario.getGrupo() + " ? 1.Si 2.No");
-                    confirmacion = entrada.nextInt();
+                    confirmacion = this.decidir();
                     if (confirmacion == 1) {
                         this.horarios.remove(horario);
                     }
@@ -259,7 +261,7 @@ public class PerfilAdministrador extends Perfil {
                     System.out.println("Cual es el dato a modificar de la materia: " + materia.getNombre());
                     System.out.println("");
                     System.out.println("1.Nombre 2.Maestro (Otro numero).Salir");
-                    eleccion = entrada.nextInt();
+                    eleccion = this.decidir();
                     
                     entrada.nextLine();
 
@@ -282,7 +284,7 @@ public class PerfilAdministrador extends Perfil {
                             nuevoNombreM = entrada.nextLine();
                             materia.getMaestro().setNombre(nuevoNombreM);
                             System.out.println("Id: ");
-                            nuevoIdM = entrada.nextInt();
+                            nuevoIdM = this.decidir();
                             materia.getMaestro().setId(nuevoIdM);
                             break;
                     
@@ -318,7 +320,7 @@ public class PerfilAdministrador extends Perfil {
             for(Materia materia: this.listaMaterias){
                 if(nombre.equals(materia.getNombre())){
                     System.out.println("Eliminar la materia con nombre: " + materia.getNombre() + "1.Si 2.No");
-                    eleccion = entrada.nextInt();
+                    eleccion = this.decidir();
                     if (eleccion == 1) {
                         this.listaMaterias.remove(materia);
                     }
@@ -336,7 +338,7 @@ public class PerfilAdministrador extends Perfil {
         System.out.println("---------------------Seleccione la accion-------------------------- ");
         System.out.println("");
         System.out.println("1.Alta materia\t 2.Cargar Horario\t 3.Modificar horario\t 4.Eliminar horario\t 5.Modificar materia \t6.Eliminar materia\t (otro numero).Salir\t");
-        eleccion = entrada.nextInt();
+        eleccion = this.decidir();
         switch (eleccion) {
             case 1:
                 this.darDeAltaMateria();

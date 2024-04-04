@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Principal {
@@ -11,9 +12,35 @@ public class Principal {
         do{
             seleccionarPerfil();
             System.out.println("Desea salir  1.Si(Esta accion limpiara la memoria y se perderan los horarios)\t 2.No \t");
-            eleccion = entrada.nextInt();
+            eleccion = decidir();
+            
         }while(eleccion == 2);
         
+    }
+
+
+    public static int decidir(){
+        int indice = 0;
+        boolean excepcion = true;
+        do{
+            try{
+                System.out.println("Introduzca el indice del menu: ");
+                indice = validarEleccion();
+                excepcion = false;
+            }catch(InputMismatchException e){
+                System.out.println("Introduzca un numero entero");
+            }
+            
+        }while(excepcion);
+        
+        return indice;
+       
+    } 
+
+    public static int validarEleccion() throws InputMismatchException{
+        Scanner entrada = new Scanner(System.in);
+        int eleccion = entrada.nextInt();
+        return eleccion;
     }
 
     public static void seleccionarPerfil() {
@@ -26,8 +53,7 @@ public class Principal {
         System.out.println("-----------------------------------Bienvenido-------------------------------------------");
         System.out.println(" - ¿Que desea hacer?");
         System.out.println("1.Iniciar sesión\t  2. Crear nuevo perfil\t (otra tecla). salir \t");
-        System.out.print("Opcion: ");
-        eleccion = entrada.nextInt();
+        eleccion = decidir();
         switch (eleccion) {
             case 1:
                 boolean NoEncontrado = true;
@@ -70,7 +96,7 @@ public class Principal {
                 }
                 System.out.println("\t1.Prefecto\t2.Administrador\t");
                 System.out.print("Opcion: ");
-                eleccion = entrada.nextInt();
+                eleccion = decidir();
                 entrada.nextLine(); 
                 count++;
             }while(eleccion > 2 || eleccion < 1);
