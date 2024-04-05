@@ -175,14 +175,16 @@ public class PerfilAdministrador extends Perfil {
                             do{
                                 System.out.println("Ingrese el indice del dia de la materia a modificar: ");
                                 for (int i = 0; i < dias.length; i++) {
-                                    System.out.println(i + dias[i]);
+                                    System.out.println((i+1) + dias[i]);
                                 }
                                 auxDia = this.decidir();
+                                auxDia--;
                                 System.out.println("Ingrese el indice de la hora de la materia a modificar");
-                                for (int i = 0; i < dias.length; i++) {
-                                    System.out.println(i + modulos[i]);
+                                for (int i = 0; i < modulos.length; i++) {
+                                    System.out.println((i+1) + modulos[i]);
                                 }
                                 auxHora = this.decidir();
+                                auxHora--;
                             }while(auxDia <= 0 || auxDia > 5 || auxHora <= 0 || auxHora > 8);
                             System.out.println("Cual sera la materia que reemplazara el lugar del dia " + dias[auxDia] + "a la hora " + modulos[auxHora] + "?: ");
                             
@@ -190,15 +192,31 @@ public class PerfilAdministrador extends Perfil {
                                 System.out.println(materia.getNombre());
                             }
 
-                            entrada.nextLine();
-                            System.out.println("Escriba el nombre de la materia que quiere seleccionar: ");
-                            nombre = entrada.nextLine();
+                            boolean encontrado = true;
+                            do{
+                                entrada.nextLine();
+                                System.out.println("Escriba el nombre de la materia que quiere seleccionar: ");
+                                nombre = entrada.nextLine();
 
+                                for(Materia materia: this.listaMaterias){
+                                    if (materia.getNombre().equals(nombre)) {
+                                        encontrado = false;
+                                    }
+                                }
+                                if (encontrado) {
+                                    System.out.println("\tNo se encontro una materia con ese nombre\t");
+                                }
+    
+    
+                                
+                            }while (encontrado); 
+                                
                             for(Materia materia: this.listaMaterias){
                                 if (materia.getNombre().equals(nombre)) {
                                     auxMaterias[auxDia][auxHora] = materia;
                                 }
                             }
+                           
                             
                             horario.setMaterias(auxMaterias);
                             

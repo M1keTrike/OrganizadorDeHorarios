@@ -100,7 +100,7 @@ public class PerfilPrefecto extends Perfil{
             LocalTime horaComparar;
 
             for(int i = 0; i<8 && flag; i++){
-                 horaComparar = LocalTime.parse(horas[i], DateTimeFormatter.ofPattern("H:mm"));
+                    horaComparar = LocalTime.parse(horas[i], DateTimeFormatter.ofPattern("H:mm"));
                 if(hora.isAfter(horaComparar)){
                     horaTReal = i;
                     flag = false;
