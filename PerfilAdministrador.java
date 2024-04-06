@@ -162,12 +162,14 @@ public class PerfilAdministrador extends Perfil {
                             System.out.println("Cual es el nuevo nombre para el horario: ");
                             nombre = entrada.nextLine();
                             horario.setGrupo(nombre);
+                            this.verFunciones();
                             break;
                         case 2:
                             entrada.nextLine();
                             System.out.println("Cual es la nueva generacion para el horario: ");
                             nombre = entrada.nextLine();
                             horario.setGeneracion(nombre);
+                            this.verFunciones();
                             break;
                         case 3:
                             entrada.nextLine();
@@ -219,6 +221,8 @@ public class PerfilAdministrador extends Perfil {
                            
                             
                             horario.setMaterias(auxMaterias);
+
+                            this.verFunciones();
                             
                             break;
                         default:
@@ -290,6 +294,7 @@ public class PerfilAdministrador extends Perfil {
                             System.out.println("Nuevo nombre: ");
                             nuevoNombre = entrada.nextLine();
                             materia.setNombre(nuevoNombre);
+                            this.verFunciones();
                             break;
                         case 2:
                             int nuevoIdM;
@@ -304,6 +309,7 @@ public class PerfilAdministrador extends Perfil {
                             System.out.println("Id: ");
                             nuevoIdM = this.decidir();
                             materia.getMaestro().setId(nuevoIdM);
+                            this.verFunciones();
                             break;
                     
                         default:
