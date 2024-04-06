@@ -321,8 +321,6 @@ public class PerfilAdministrador extends Perfil {
         }
     }
 
-    
-
     public void eliminarMaterias(){
         if (this.listaMaterias.isEmpty()) {
             System.out.println("No hay materia a eliminar");
@@ -359,9 +357,9 @@ public class PerfilAdministrador extends Perfil {
     public void verFunciones(){
         Scanner entrada = new Scanner(System.in);
         int eleccion;
-        System.out.println("---------------------Seleccione la accion-------------------------- ");
+        System.out.println("---------------------Bienvenido -------------------------- ");
         System.out.println("");
-        System.out.println("1.Alta materia\t 2.Cargar Horario\t 3.Modificar horario\t 4.Eliminar horario\t 5.Modificar materia \t6.Eliminar materia\t (otro numero).Salir\t");
+        System.out.println("1 = Alta materia\n2 = Cargar Horario\n3 = Modificar horario\n4 = Eliminar horario\n5 = Modificar materia \n6 = Eliminar materia\n (otro numero) = cerrar sesion\n");
         eleccion = this.decidir();
         switch (eleccion) {
             case 1:
@@ -382,8 +380,8 @@ public class PerfilAdministrador extends Perfil {
             case 6:
                 this.eliminarMaterias();
                 break;
-        
             default:
+                System.out.println("¡Sesion cerrada!");
                 break;
         }
     }

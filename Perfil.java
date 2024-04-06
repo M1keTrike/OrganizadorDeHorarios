@@ -39,11 +39,12 @@ public abstract class Perfil {
         boolean excepcion = true;
         do{
             try{
-                System.out.println("Numero: ");
+                System.out.print("Eleccion: ");
                 indice = validarEleccion();
                 excepcion = false;
             }catch(InputMismatchException e){
-                System.out.println("Introduzca un numero entero");
+                System.out.println("\n¡Debe ser un numero entero!\n");
+                System.out.println("vuelva a introducir la opcion");
             }
             
         }while(excepcion);
@@ -57,7 +58,6 @@ public abstract class Perfil {
         int eleccion = entrada.nextInt();
         return eleccion;
     }
-
 
     public abstract void verFunciones();
     

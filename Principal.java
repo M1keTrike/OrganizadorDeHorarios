@@ -11,7 +11,7 @@ public class Principal {
         int eleccion;
         do{
             seleccionarPerfil();
-            System.out.println("Desea salir  1.Si(Esta accion limpiara la memoria y se perderan los horarios)\t 2.No \t");
+            System.out.println("--------------¿Desea salir del sistema?-------------------\n1 = Si (Esta accion limpiara la memoria y se perderan los horarios)\n2 = volver al menú \t");
             eleccion = decidir();
             
         }while(eleccion == 2);
@@ -24,11 +24,11 @@ public class Principal {
         boolean excepcion = true;
         do{
             try{
-                System.out.println("Introduzca el indice del menu: ");
+                System.out.print("Introduzca el indice de la opcion del menu: ");
                 indice = validarEleccion();
                 excepcion = false;
             }catch(InputMismatchException e){
-                System.out.println("Introduzca un numero entero");
+                System.out.print("Introduzca un numero entero: ");
             }
             
         }while(excepcion);
@@ -49,35 +49,39 @@ public class Principal {
             System.out.println("");
             crearNuevoPerfil();
         }
-
-        System.out.println("-----------------------------------Bienvenido-------------------------------------------");
-        System.out.println(" - ¿Que desea hacer?");
-        System.out.println("1.Iniciar sesión\t  2. Crear nuevo perfil\t (otra tecla). salir \t");
-        eleccion = decidir();
-        switch (eleccion) {
-            case 1:
-                boolean NoEncontrado = true;
-                String nombreIngresado;
-                entrada.nextLine();
-                System.out.print("Ingrese el nombre del usuario: ");
-                nombreIngresado = entrada.nextLine();
-                for (Perfil perfil : perfiles) {
-                    if (nombreIngresado.equals(perfil.getNombreUsuario())){
-                        perfil.iniciarSesion(perfil.getContrasena());
-                        NoEncontrado = false; 
+        do{
+            System.out.println("-----------------------------------Bienvenido-------------------------------------------\n\n");
+            System.out.println(" - ¿Que desea hacer?");
+            System.out.println("1. Iniciar sesión\t  2. Crear nuevo perfil\t (otro numero). salir \t");
+            eleccion = decidir();
+            switch (eleccion) {
+                case 1:
+                    boolean NoEncontrado = true;
+                    String nombreIngresado;
+                    System.out.print("Ingrese el nombre del usuario: ");
+                    nombreIngresado = entrada.nextLine();
+                    for (Perfil perfil : perfiles) {
+                        if (nombreIngresado.equals(perfil.getNombreUsuario())){
+                            perfil.iniciarSesion(perfil.getContrasena());
+                            NoEncontrado = false; 
+                        }
                     }
-                }
-                if (NoEncontrado) {
-                    System.out.println("\nUsuario no encontrado\n");
-                }
-                
-                break;
-            case 2:
-                crearNuevoPerfil();
-                break;
-            default:
-                break;
-        }
+                    if (NoEncontrado) {
+                        System.out.println("\nUsuario no encontrado\n");
+                    }
+                    
+                    break;
+                case 2:
+                    crearNuevoPerfil();
+                    break;
+                default:
+                    break;
+            }
+            
+            System.out.println("¿desea salir?");
+            System.out.println("1 = si\t2 = no");
+            eleccion = decidir();
+        }while(eleccion == 2);
     }
 
     public static void crearNuevoPerfil() {
@@ -95,14 +99,12 @@ public class Principal {
                     System.out.println("Error ------ Seleccione por indice una de las siguientes opciones:");
                 }
                 System.out.println("\t1.Prefecto\t2.Administrador\t");
-                System.out.print("Opcion: ");
                 eleccion = decidir();
-                entrada.nextLine(); 
                 count++;
             }while(eleccion > 2 || eleccion < 1);
         }
     
-        
+        System.out.println("");
 
         System.out.println("Ingrese las credenciales del nuevo perfil empezando por: ");
         System.out.print("Nombre de usuario: ");
@@ -116,17 +118,17 @@ public class Principal {
             aux = entrada.nextLine();
         } while (!aux.equals(nuevaContrasenaU));
         
-        entrada.nextLine();
-
         if (eleccion == 1) {
             nuevoPerfil = new PerfilPrefecto(nuevoNombreU, nuevaContrasenaU);
-            System.out.println("\n\nAsigne un ADMINISTRADOR a este perfil\n\n");
-            System.out.println("Escriba el nombre del administador, guiese por la siguiente lista de administradores: \n\n");
+            System.out.println("\n--------------Asigne un ADMINISTRADOR a este perfil---------------------\n");
+            System.out.println("Tome en cuenta los siguientes: ");
             for(Perfil perfil: perfiles){
                 if (perfil instanceof PerfilAdministrador) {
-                    System.out.println("\t" + perfil.getNombreUsuario());
+                    System.out.println( perfil.getNombreUsuario());
                 }
             }
+            System.out.println("\tEscriba el nombre del administador, guiese por la lista de administradores de arriva");
+            System.out.print("\tNombre: ");
             aux = entrada.nextLine();
             for(Perfil perfil: perfiles){
                 if (perfil instanceof PerfilAdministrador) {
@@ -140,7 +142,7 @@ public class Principal {
         } else {
             nuevoPerfil = new PerfilAdministrador(nuevoNombreU, nuevaContrasenaU);
         }
-
+        System.out.println("-----------perfil Guardado----------------\n\n");
         perfiles.add(nuevoPerfil);
         seleccionarPerfil();
     }

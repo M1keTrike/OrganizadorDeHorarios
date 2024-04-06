@@ -182,13 +182,21 @@ public class PerfilPrefecto extends Perfil{
     public void verFunciones(){
         Scanner entrada = new Scanner(System.in);
         int eleccion;
-        System.out.println("Seleccione la accion 1.Ver Horarios 2.Ver interfaz especial 3.Salir");
+        System.out.println("------------------Bienvenido------------------");
+        System.out.println("1 = Ver Horarios\t2 = Ver interfaz especial\t(otra tecla) = cerrar sesion");
         eleccion = this.decidir();
-        if (eleccion == 1) {
-            this.verHorario();
-        } else if (eleccion == 2) {
+        switch (eleccion) {
+            case 1:
+                this.verHorario();
+                break;
+            case 2: 
             this.verInterfazEspecial();
-        } 
+                break;
+            default:
+                System.out.println("¡Sesion cerrada!");
+                break;
+        }
+        
     }
     
 }
