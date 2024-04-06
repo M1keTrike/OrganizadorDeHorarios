@@ -291,7 +291,7 @@ public class PerfilAdministrador extends Perfil {
                             nuevoNombre = entrada.nextLine();
                             materia.setNombre(nuevoNombre);
                             break;
-                        case 4:
+                        case 2:
                             int nuevoIdM;
                             String nuevoNombreM;
                             System.out.println("Datos actuales del maestro: ");
