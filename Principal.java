@@ -10,8 +10,13 @@ public class Principal {
     public static void main(String[] args) {
         int eleccion;
         do{
-            seleccionarPerfil();
-            System.out.println("--------------¿Desea salir del sistema?-------------------\n1 = Si (Esta accion limpiara la memoria y se perderan los horarios)\n2 = volver al menú \t");
+            do{
+                seleccionarPerfil();
+                System.out.println("\nvolver al menu de inicio:");
+                System.out.println("1 = Si\t2 = No");
+                eleccion = decidir();
+            }while(eleccion != 2);
+            System.out.println("\n--------------¡PRECAUCION!...¿Desea salir del sistema?-------------------\n1 = Si (Esta accion limpiara la memoria y se perderan los horarios)\n2 = volver al menú \t");
             eleccion = decidir();
             
         }while(eleccion == 2);
@@ -49,39 +54,33 @@ public class Principal {
             System.out.println("");
             crearNuevoPerfil();
         }
-        do{
-            System.out.println("-----------------------------------Bienvenido-------------------------------------------\n\n");
-            System.out.println(" - ¿Que desea hacer?");
-            System.out.println("1. Iniciar sesión\t  2. Crear nuevo perfil\t (otro numero). salir \t");
-            eleccion = decidir();
-            switch (eleccion) {
-                case 1:
-                    boolean NoEncontrado = true;
-                    String nombreIngresado;
-                    System.out.print("Ingrese el nombre del usuario: ");
-                    nombreIngresado = entrada.nextLine();
-                    for (Perfil perfil : perfiles) {
-                        if (nombreIngresado.equals(perfil.getNombreUsuario())){
-                            perfil.iniciarSesion(perfil.getContrasena());
-                            NoEncontrado = false; 
-                        }
+        System.out.println("\n-----------------------------------Inicio-------------------------------------------\n");
+        System.out.println(" - ¿Que desea hacer?");
+        System.out.println("1. Iniciar sesión\t  2. Crear nuevo perfil\t (otro numero). salir \t");
+        eleccion = decidir();
+        switch (eleccion) {
+            case 1:
+                boolean NoEncontrado = true;
+                String nombreIngresado;
+                System.out.print("Ingrese el nombre del usuario: ");
+                nombreIngresado = entrada.nextLine();
+                for (Perfil perfil : perfiles) {
+                    if (nombreIngresado.equals(perfil.getNombreUsuario())){
+                        perfil.iniciarSesion(perfil.getContrasena());
+                        NoEncontrado = false; 
                     }
-                    if (NoEncontrado) {
-                        System.out.println("\nUsuario no encontrado\n");
-                    }
-                    
-                    break;
-                case 2:
-                    crearNuevoPerfil();
-                    break;
-                default:
-                    break;
-            }
+                }
+                if (NoEncontrado) {
+                    System.out.println("\nUsuario no encontrado\n");
+                }                
+                break;
+            case 2:
+                crearNuevoPerfil();
+                break;
+            default:
+                break;
+        }
             
-            System.out.println("¿desea salir?");
-            System.out.println("1 = si\t2 = no");
-            eleccion = decidir();
-        }while(eleccion == 2);
     }
 
     public static void crearNuevoPerfil() {
