@@ -314,25 +314,26 @@ public class PerfilAdministrador extends Perfil {
             Scanner entrada = new Scanner(System.in);
             String nombre;
             int eleccion;
-            System.out.println("Estas son las materias actuales");
+            System.out.println("\n\n---Estas son las materias actuales---");
             for(Materia materia: this.listaMaterias){
-                System.out.println(materia.getNombre());
-                System.out.println("Datos del maestro: " + "Nombre: " + materia.getMaestro().getNombre() + "Id" + materia.getMaestro().getId());
+                System.out.println("\n\t" + materia.getNombre());
+                System.out.println("\tDatos del maestro: " + "\tNombre: " + materia.getMaestro().getNombre() + "\tId: " + materia.getMaestro().getId());
             }
 
             System.out.println("\n\n La materia eliminada SEGUIRA ACTIVA en los horarios creados antes de su eliminacion");
-
-            System.out.println("Escriba el nombre de la materia a eliminar");
+            Materia auxEliminar = null;
+            System.out.println("Escriba el nombre de la materia a eliminar: ");
             nombre = entrada.nextLine();
             for(Materia materia: this.listaMaterias){
                 if(nombre.equals(materia.getNombre())){
-                    System.out.println("Eliminar la materia con nombre: " + materia.getNombre() + "1.Si 2.No");
+                    System.out.println("Eliminar la materia con nombre: " + materia.getNombre() + " 1 = Si 2 = No");
                     eleccion = this.decidir();
                     if (eleccion == 1) {
-                        this.listaMaterias.remove(materia);
+                        auxEliminar = materia;
                     }
                 }
             }
+            this.listaMaterias.remove(auxEliminar);
         }
     }
 

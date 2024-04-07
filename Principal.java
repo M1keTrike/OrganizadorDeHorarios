@@ -114,20 +114,20 @@ public class Principal {
             System.out.print("Contraseña: ");
             nuevaContrasenaU = entrada.nextLine();
 
-            System.out.print("Confirme la contraseña:");
+            System.out.print("Confirme la contraseña: ");
             aux = entrada.nextLine();
         } while (!aux.equals(nuevaContrasenaU));
         
         if (eleccion == 1) {
             nuevoPerfil = new PerfilPrefecto(nuevoNombreU, nuevaContrasenaU);
             System.out.println("\n--------------Asigne un ADMINISTRADOR a este perfil---------------------\n");
-            System.out.println("Tome en cuenta los siguientes: ");
+            System.out.println("Tome en cuenta los siguientes ADMINISTRADORES: ");
             for(Perfil perfil: perfiles){
                 if (perfil instanceof PerfilAdministrador) {
                     System.out.println( perfil.getNombreUsuario());
                 }
             }
-            System.out.println("\tEscriba el nombre del administador, guiese por la lista de administradores de arriva");
+            System.out.println("\tEscriba el nombre del administador, guiese por la lista de administradores de la parte superior");
             System.out.print("\tNombre: ");
             aux = entrada.nextLine();
             for(Perfil perfil: perfiles){
