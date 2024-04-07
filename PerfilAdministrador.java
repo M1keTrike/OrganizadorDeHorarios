@@ -341,7 +341,7 @@ public class PerfilAdministrador extends Perfil {
         int eleccion;
         do{
 
-            System.out.println("---------------------Bienvenido -------------------------- ");
+            System.out.println("\n-----------------------------Bienvenido Administrador-------------------------------- ");
             System.out.println("");
             System.out.println("1 = Alta materia\n2 = Cargar Horario\n3 = Modificar horario\n4 = Eliminar horario\n5 = Modificar materia \n6 = Eliminar materia\n (otro numero) = cerrar sesion\n");
             eleccion = this.decidir();
@@ -365,11 +365,11 @@ public class PerfilAdministrador extends Perfil {
                     this.eliminarMaterias();
                     break;
                 case 7:
-                    System.out.println("¡Sesion cerrada!");
+                    System.out.println("----------------------------¡Sesion cerrada!---------------------------------");
                     break;
                 default:
                     System.out.println("se tomara la accion como cerra sesion");
-                    System.out.println("¡Sesion cerrada!");
+                    System.out.println("----------------------------¡Sesion cerrada!---------------------------------");
                     eleccion = 7;
                 break;
             }
