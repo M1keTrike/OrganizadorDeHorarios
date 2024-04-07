@@ -10,11 +10,13 @@ public abstract class Perfil {
 
     public void iniciarSesion(String contrasenaUs){
         String contrasena1;
+        int opcion;
         Scanner entrada = new Scanner(System.in);
         do{
             System.out.print("Ingrese su contrasena:");
             contrasena1 = entrada.nextLine();
         }while(!contrasenaUs.equals(contrasena1));
+        
         this.verFunciones();
     }
 

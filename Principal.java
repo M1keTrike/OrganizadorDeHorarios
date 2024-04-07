@@ -144,7 +144,7 @@ public class Principal {
         }
         System.out.println("-----------perfil Guardado----------------\n\n");
         perfiles.add(nuevoPerfil);
-        seleccionarPerfil();
+   
     }
 
     
