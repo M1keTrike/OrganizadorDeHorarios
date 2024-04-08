@@ -101,15 +101,16 @@ public class PerfilPrefecto extends Perfil{
 
             for(int i = 0; i<8 && flag; i++){
                     horaComparar = LocalTime.parse(horas[i], DateTimeFormatter.ofPattern("H:mm"));
-                if(hora.isAfter(horaComparar)){
-                    horaTReal = i;
+                if(hora.isBefore(horaComparar)){
+                    horaTReal = i-1;
+                    System.out.println(horaTReal);
                     flag = false;
                 }
             }
                 
             
         }else {
-            System.out.println("Esta fuera del horario escolar, por defecto se muestra la primera hora del dia lunes para ese grupo");
+            System.out.println("Esta fuera del horario escolar, por defecto se muestra la primera hora del dia para ese grupo");
         }
 
         if (diaTReal == 7 || diaTReal == 6) {
