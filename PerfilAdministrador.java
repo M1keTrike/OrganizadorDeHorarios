@@ -237,16 +237,19 @@ public class PerfilAdministrador extends Perfil {
             System.out.println("\n");
             System.out.print("Nombre del horario a eliminar: ");
             nombre = entrada.nextLine();
+            Horario auxEliminar = null;
 
             for(Horario horario : this.horarios){
                 if (nombre.equals(horario.getGrupo())) {
                     System.out.println("Estas seguro de eliminar el horario con el grupo " + horario.getGrupo() + " \n 1 = Si\t2 = No");
                     confirmacion = this.decidir();
+                    
                     if (confirmacion == 1) {
-                        horarios.remove(horario);
+                       auxEliminar = horario;
                     }
                 }
             }
+            horarios.remove(auxEliminar);
 
         }
     }
