@@ -1,6 +1,6 @@
 import java.util.Scanner;
 import java.util.ArrayList;
-import java.util.InputMismatchException;;
+import java.util.InputMismatchException;
 
 public abstract class Perfil {
 
@@ -10,7 +10,7 @@ public abstract class Perfil {
 
     public void iniciarSesion(String contrasenaUs){
         String contrasena1;
-        int opcion;
+        
         Scanner entrada = new Scanner(System.in);
         do{
             System.out.print("Ingrese su contrasena:");

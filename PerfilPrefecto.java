@@ -123,7 +123,7 @@ public class PerfilPrefecto extends Perfil{
     }
 
     public void mostrarMateria(String nombre,Materia[][] auxMaterias,int horaTReal, int diaTReal){
-        Scanner entrada = new Scanner(System.in);
+        
         String dias[] = {"Lunes","Martes","Miercoles","Jueves","Viernes"};
         String modulos[] = {"7:00-7:50","7:50-8:40","8:40-9:30","10:00-10:50","10:50-11:40","11:40-12:30","12:30-13:20","13:20-14:10"};
         int controles;

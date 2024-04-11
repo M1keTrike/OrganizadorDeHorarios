@@ -27,7 +27,7 @@ public class PerfilAdministrador extends Perfil {
             Maestro nulo = new Maestro();
             nulo.setNombre(".");
             nulo.setId(0);
-            materiaDefault.asignarMaestro(nulo);
+            materiaDefault.setobjMaestro(nulo);
             listaMaterias.add(materiaDefault);
         }
         Materia nuevaMateria = new Materia();
@@ -38,15 +38,10 @@ public class PerfilAdministrador extends Perfil {
 
         
         System.out.println("Ingrese los datos del maestro");
-        Maestro nuevoMaestro = new Maestro();
+        nuevaMateria.asignarMaestro();
         
-        System.out.print("Nombre: ");
-        nuevoMaestro.setNombre(entrada.nextLine());
 
-        System.err.println("ingrese el id del maestro");
-        nuevoMaestro.setId(this.decidir());
-
-        nuevaMateria.asignarMaestro(nuevoMaestro);
+        
 
         this.listaMaterias.add(nuevaMateria);
 
@@ -60,7 +55,7 @@ public class PerfilAdministrador extends Perfil {
             String modulos[] = {"7:00-7:50","7:50-8:40","8:40-9:30","10:00-10:50","10:50-11:40","11:40-12:30","12:30-13:20","13:20-14:10"};
             Scanner entrada = new Scanner(System.in);
             Horario objHorario = new Horario();
-            String busqueda;
+            
 
             System.out.println("\n-------------Ingrese los datos del nuevo horario---------------");
             
