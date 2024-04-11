@@ -72,35 +72,49 @@ public class PerfilAdministrador extends Perfil {
 
             objHorario.setGeneracion(entrada.nextLine());
 
-            System.out.println("\n-----------Lista de materias cargadas-------------\n");
+            System.out.println("\n-----------Lista de materias cargadas-------------\n --Ingrese materias usando los indices-- \n");
 
-            for (Materia materia : this.listaMaterias) {
-                System.out.println(materia.getNombre());
+            for (int i = 0; i < this.listaMaterias.size(); i++) {
+                System.out.println((i+1) + " " + listaMaterias.get(i).getNombre());
             }
-            System.out.println("");
 
             Materia[][] auxHorario = objHorario.getMaterias();
-            boolean encontrado;
+            boolean bandera = true;
+            int eleccion;
             
-            for (int i = 0; i < 5; i++) {
-                for (int j = 0; j < 8; j++) {
-                    encontrado = true;
-                    do{
-                        System.out.println("Seleccione la materia para el dia " + dias[i] + " en horario de  " + modulos[j]);
-                        System.out.print("ingresando el nombre de la materia:");
-                        busqueda = entrada.nextLine();
-                        for (Materia materia : this.listaMaterias) {
-                            if (materia.getNombre().equals(busqueda)) {
-                                encontrado = false;
-                                auxHorario[i][j] = materia;
-                            }
-                        }
-                        if (encontrado) {
-                            System.out.println("No se encontro el nombre de esa materia");
-                        }
+            for (int i = 0; i < 5 && bandera; i++) {
+                System.out.println("\n--Se cargaran las materias del dia " + dias[i] + " Proceder? 1 = SI 2 = NO--\n");
+                eleccion = this.decidir();
+                if (eleccion == 1) {
+                    for (int j = 0; j < 8; j++) {
+                        eleccion = -1;
+                        bandera = true;
+                        do{
+                            System.out.println("Seleccione la materia para el dia " + dias[i] + " en horario de  " + modulos[j]);
+                            System.out.print("ingresando el indice de la materia ");
+                            
+                            eleccion = this.decidir();
 
-                    }while(encontrado);
+                            if (!(eleccion > this.listaMaterias.size() || eleccion <= 0)) {
+                                auxHorario[i][j] = this.listaMaterias.get(eleccion-1);
+                                bandera = false;
+                            }
+                            if (bandera) {
+                                System.out.println("\n-----El indice ingresado no coincide con ninguna materia cargada-----\n");
+                            }
+                        }while(bandera);
+                    }
+                    bandera = true;
+                }else{
+                    bandera = false;
+                    System.out.println("\n---Puede cargar las materias faltantes en el apartado de MODIFICAR HORARIO---\n--Los espacios faltantes seran rellenados con MODULO LIBRE--\n");
+                    for (int j = i; j < 5; j++) {
+                        for(int k = 0; k < 8; k++){
+                            auxHorario[j][k] = this.listaMaterias.get(0);
+                        }
+                    }
                 }
+               
             }
             System.out.println("-------------Horario cargado-------------------");
             objHorario.setMaterias(auxHorario);
