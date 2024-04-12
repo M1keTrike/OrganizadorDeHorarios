@@ -17,29 +17,34 @@ public class PerfilPrefecto extends Perfil{
         Scanner entrada = new Scanner(System.in);
         String seleccion;
         Materia[][] aux ;
-        String dias[] = {"Lunes","Martes","Miercoles","Jueves","Viernes"};
+        String dias[] = {"---------","--Lunes--","--Martes-","Miercoles","--Jueves-","-Viernes-", ""};
         String modulos[] = {"7:00-7:50","7:50-8:40","8:40-9:30","10:00-10:50","10:50-11:40","11:40-12:30","12:30-13:20","13:20-14:10"};
         if(horarios.isEmpty()){
             System.out.println("la lista de horarios esta vacia");
             this.verFunciones();
         }else{
-            System.out.println("Escriba el nombre del horario a visualizar: ");
+            System.out.println("Escriba el grupo del horario a visualizar: ");
             for(Horario elemento  : this.horarios){
-                System.out.println(elemento.getGrupo());
+                System.out.println("\n-- " + elemento.getGrupo() + " --");
             }
             seleccion = entrada.nextLine();
             for(Horario elemento  : this.horarios){
                 if(elemento.getGrupo().equals(seleccion)){
-                    System.out.println(elemento.getGrupo());
-                    System.out.println(elemento.getGeneracion());
+                    System.out.println("\n--Grupo: " + elemento.getGrupo() + "--\n");
+                    System.out.println("\n--Generacion: " + elemento.getGeneracion() + "--\n");
                     aux = elemento.getMaterias();
-                    for (int i = 0; i < 5; i++) {
-                        System.out.println(dias[i]);
-                        for (int j = 0; j < 8; j++) {
-                            System.out.println(modulos[j]);
-                            System.out.println(aux[i][j].getNombre() + "\t" + "Maestro: " + aux[i][j].getMaestro().getNombre());
+                    for (int i = 0; i < 6; i++) {
+                        System.out.print(dias[i] + "\t");
+                    for (int j = 0; j < 8; j++) {
+                        if(i==0){
+                            System.out.print(modulos[j] + "\t");
+                        }else{
+
+                            System.out.print(aux[i-1][j].getNombre() + "\t");
                         }
                     }
+                    System.out.println("\n");
+                }
                 }
             }
         }
@@ -62,9 +67,9 @@ public class PerfilPrefecto extends Perfil{
 
         boolean encontrado = true;
         do{
-            System.out.println("Escriba el nombre del horario a visualizar");
+            System.out.println("Escriba el grupo del horario a visualizar");
             for(Horario elemento  : this.horarios){
-                System.out.println(elemento.getGrupo());
+                System.out.println("\n--" + elemento.getGrupo() + " --");
             }
             busqueda = entrada.nextLine();
 
@@ -76,7 +81,7 @@ public class PerfilPrefecto extends Perfil{
             }
             if (encontrado) {
                 int eleccion;
-                System.out.println("No se encontro un horario con ese nombre, desea regresar al menu anterior? 1.Si 2.No");
+                System.out.println("No se encontro un horario con ese grupo, desea regresar al menu anterior? 1.Si 2.No");
                 eleccion = this.decidir();
                 if (eleccion == 1) {
                     this.verFunciones();
@@ -184,7 +189,7 @@ public class PerfilPrefecto extends Perfil{
         Scanner entrada = new Scanner(System.in);
         int eleccion;
         System.out.println("------------------Bienvenido------------------");
-        System.out.println("1 = Ver Horarios\t2 = Ver interfaz especial\t(otra tecla) = cerrar sesion");
+        System.out.println("1 = Ver Horarios\t2 = Ver interfaz especial\t (otro numero) = cerrar sesion");
         eleccion = this.decidir();
         switch (eleccion) {
             case 1:

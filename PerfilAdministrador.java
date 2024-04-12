@@ -33,8 +33,24 @@ public class PerfilAdministrador extends Perfil {
         Materia nuevaMateria = new Materia();
         Scanner entrada = new Scanner(System.in);
         System.out.println("Ingrese los datos de la nueva materia");
-        System.out.print("Nombre: ");
-        nuevaMateria.setNombre(entrada.nextLine());
+
+        boolean bandera = false;
+        String nombreAsignarMateria;
+        do{
+            bandera = false;
+            System.out.print("Nombre: ");
+            nombreAsignarMateria = entrada.nextLine();
+            for(Materia materia : this.listaMaterias){
+                if (nombreAsignarMateria.equals(materia.getNombre())) {
+                    bandera = true;
+                }
+                if (bandera) {
+                    System.out.println("\n--Ya existe una materia con ese nombre, escriba otro--\n");
+                }
+            }
+        }while(bandera);
+
+        nuevaMateria.setNombre(nombreAsignarMateria);
 
         
         System.out.println("Ingrese los datos del maestro");
@@ -130,7 +146,7 @@ public class PerfilAdministrador extends Perfil {
 
             System.out.println("--------------Horarios cargados---------------\n");
             for(Horario horario : this.horarios){
-                System.out.println(horario.getGrupo());
+                System.out.println("\n-- " + horario.getGrupo() + " --");
             }
             System.out.print("Ingrese el nombre del horario a modificar: ");
             nombre = entrada.nextLine();
@@ -138,10 +154,10 @@ public class PerfilAdministrador extends Perfil {
             for(Horario horario : this.horarios){
                 if (nombre.equals(horario.getGrupo())) {
                     Materia[][] auxMaterias = horario.getMaterias();
-                    System.out.println("Estos son los datos actuales del horario: ");
-                    System.out.println("Grupo: " + horario.getGrupo());
-                    System.out.println("Generacion: " + horario.getGeneracion());
-                    System.out.println("Materias: ");
+                    System.out.println("\n--Estos son los datos actuales del horario--\n");
+                    System.out.println("\n--Grupo: " + horario.getGrupo() + "--\n");
+                    System.out.println("\n--Generacion: " + horario.getGeneracion() + "--\n");
+                    System.out.println("\n--Materias--\n");
                     for (int i = 0; i < 6; i++) {
                             System.out.print(dias[i] + "\t");
                         for (int j = 0; j < 8; j++) {
@@ -288,11 +304,24 @@ public class PerfilAdministrador extends Perfil {
 
                     switch (eleccion) {
                         case 1:
-                            String nuevoNombre;
                             System.out.println("Nombre actual: " + materia.getNombre());
-                            System.out.print("Nuevo nombre: ");
-                            nuevoNombre = entrada.nextLine();
-                            materia.setNombre(nuevoNombre);
+                            System.out.print("\n--Ingrese el nuevo nombre-- \n");
+                            boolean bandera = false;
+                            String nombreAsignarMateria;
+                            do{
+                                bandera = false;
+                                System.out.print("Nombre: ");
+                                nombreAsignarMateria = entrada.nextLine();
+                                for(Materia materiaBuscarDup : this.listaMaterias){
+                                    if (nombreAsignarMateria.equals(materiaBuscarDup.getNombre())) {
+                                        bandera = true;
+                                    }
+                                    if (bandera) {
+                                        System.out.println("\n--Ya existe una materia con ese nombre, escriba otro--\n");
+                                    }
+                                }
+                            }while(bandera);
+                            materia.setNombre(nombreAsignarMateria);
                             break;
                         case 2:
                             int nuevoIdM;

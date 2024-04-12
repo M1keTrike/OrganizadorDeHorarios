@@ -20,8 +20,17 @@ public class Materia {
         System.out.print("Nombre: ");
         nuevoMaestro.setNombre(entrada.nextLine());
 
-        System.err.println("ingrese el id del maestro");
-        nuevoMaestro.setId(this.decidir());
+        int idAsignarMaestro;
+
+        do{
+            System.err.println("ingrese el id del maestro");
+            idAsignarMaestro = this.decidir();
+            if (idAsignarMaestro > 99) {
+                System.out.println("\n--El id del maestro debe de ser menor a 3 digitos--\n");
+            }
+        }while(idAsignarMaestro > 99);
+
+        nuevoMaestro.setId(idAsignarMaestro);
         this.objMaestro = nuevoMaestro;
     }
     public String getNombre() {

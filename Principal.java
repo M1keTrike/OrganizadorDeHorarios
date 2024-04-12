@@ -103,11 +103,28 @@ public class Principal {
             }while(eleccion > 2 || eleccion < 1);
         }
     
-        System.out.println("");
+        
 
-        System.out.println("Ingrese las credenciales del nuevo perfil empezando por: ");
-        System.out.print("Nombre de usuario: ");
-        nuevoNombreU = entrada.nextLine();
+        System.out.println("\nIngrese las credenciales del nuevo perfil empezando por: \n");
+        boolean bandera = false;
+        do{
+            bandera = false;
+            System.out.print("Nombre de usuario: ");
+            nuevoNombreU = entrada.nextLine();
+            if (!(perfiles.isEmpty())) {
+                for(Perfil perfil : perfiles){
+                    if (perfil.getNombreUsuario().equals(nuevoNombreU)) {
+                        bandera = true;
+                    }
+                }
+                if (bandera) {
+                    System.out.println("\n--Ya existe un perfil con ese nombre, escriba otro--\n");
+                }
+            }
+            
+        }while(bandera);
+        
+        entrada.nextLine();
 
         do {
             System.out.print("Contraseña: ");
@@ -123,7 +140,7 @@ public class Principal {
             System.out.println("Tome en cuenta los siguientes ADMINISTRADORES: ");
             for(Perfil perfil: perfiles){
                 if (perfil instanceof PerfilAdministrador) {
-                    System.out.println( perfil.getNombreUsuario());
+                    System.out.println( "\n-- " + perfil.getNombreUsuario() + " --");
                 }
             }
             System.out.println("\tEscriba el nombre del administador, guiese por la lista de administradores de la parte superior");
