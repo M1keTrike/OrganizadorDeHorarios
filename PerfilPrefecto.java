@@ -108,7 +108,6 @@ public class PerfilPrefecto extends Perfil{
                     horaComparar = LocalTime.parse(horas[i], DateTimeFormatter.ofPattern("H:mm"));
                 if(hora.isBefore(horaComparar)){
                     horaTReal = i-1;
-                    System.out.println(horaTReal);
                     flag = false;
                 }
             }
@@ -122,6 +121,9 @@ public class PerfilPrefecto extends Perfil{
             diaTReal = 0;
         }
         Materia[][] auxMaterias = horarioVisualizar.getMaterias();
+        
+        System.out.println("---------------------HORARIO EN TIEMPO REAL---------------------");
+
         mostrarMateria(horarioVisualizar.getGrupo(),auxMaterias, horaTReal, diaTReal);
 
         
@@ -133,13 +135,13 @@ public class PerfilPrefecto extends Perfil{
         String modulos[] = {"7:00-7:50","7:50-8:40","8:40-9:30","10:00-10:50","10:50-11:40","11:40-12:30","12:30-13:20","13:20-14:10"};
         int controles;
 
-        System.out.println(nombre);
+        System.out.println("\n--Grupo: " + nombre + " --");
         
         for (int i = 0; i < 5; i++) {
             for(int j = 0; j < 8 ; j++){
                 if (i == diaTReal && j == horaTReal) {
-                    System.out.println(auxMaterias[i][j].getNombre());
-                    System.out.println(auxMaterias[i][j].getMaestro().getNombre());
+                    System.out.println("\n--Materia: " + auxMaterias[i][j].getNombre() + " --");
+                    System.out.println("\n--Maestro: " + auxMaterias[i][j].getMaestro().getNombre() + " -- ID: " + auxMaterias[i][j].getMaestro().getId() + " --");
                     System.out.println(dias[i]);
                     System.out.println(modulos[j]);
                 }
@@ -189,7 +191,7 @@ public class PerfilPrefecto extends Perfil{
         Scanner entrada = new Scanner(System.in);
         int eleccion;
         System.out.println("------------------Bienvenido------------------");
-        System.out.println("1 = Ver Horarios\t2 = Ver interfaz especial\t (otro numero) = cerrar sesion");
+        System.out.println("1 = Ver Horarios\t2 = Ver horario en tiempo real \t (otro numero) = cerrar sesion");
         eleccion = this.decidir();
         switch (eleccion) {
             case 1:
