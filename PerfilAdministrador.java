@@ -155,9 +155,9 @@ public class PerfilAdministrador extends Perfil {
                 if (nombre.equals(horario.getGrupo())) {
                     Materia[][] auxMaterias = horario.getMaterias();
                     System.out.println("\n--Estos son los datos actuales del horario--\n");
-                    System.out.println("\n--Grupo: " + horario.getGrupo() + "--\n");
-                    System.out.println("\n--Generacion: " + horario.getGeneracion() + "--\n");
-                    System.out.println("\n--Materias--\n");
+                    System.out.println("\n--Grupo: " + horario.getGrupo() + " --\n");
+                    System.out.println("\n--Generacion: " + horario.getGeneracion() + " --\n");
+                    System.out.println("\n-- Materias --\n");
                     for (int i = 0; i < 6; i++) {
                             System.out.print(dias[i] + "\t");
                         for (int j = 0; j < 8; j++) {
@@ -172,13 +172,13 @@ public class PerfilAdministrador extends Perfil {
                     }
                     
 
-                    System.out.println("Que datos desea modificar:\n1.Nombre \t2 = Generacion \t3 = Modificar Materia \t4 = Salir");
+                    System.out.println("Que datos desea modificar:\n1 = Grupo \t2 = Generacion \t3 = Modificar Materia \t4 = Salir");
 
                     eleccion = this.decidir();
 
                     switch (eleccion) {
                         case 1:
-                            System.out.print("Cual es el nuevo nombre para el horario: ");
+                            System.out.print("Cual es el nuevo grupo para el horario: ");
                             nombre = entrada.nextLine();
                             horario.setGrupo(nombre);
                             break;
