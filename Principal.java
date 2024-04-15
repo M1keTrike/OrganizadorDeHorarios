@@ -124,7 +124,6 @@ public class Principal {
             
         }while(bandera);
         
-        entrada.nextLine();
 
         do {
             System.out.print("Contraseña: ");
