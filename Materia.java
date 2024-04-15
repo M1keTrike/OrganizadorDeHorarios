@@ -1,5 +1,6 @@
-import java.util.Scanner;
+import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.Scanner;
 
 public class Materia {
     Maestro objMaestro = new Maestro();
@@ -13,18 +14,29 @@ public class Materia {
     public Maestro getMaestro() {
         return objMaestro;
     }
-    public void asignarMaestro() {
+    public void asignarMaestro(ArrayList<Materia> listaMaterias) {
         Scanner entrada = new Scanner (System.in);
         Maestro nuevoMaestro = new Maestro();
         
         System.out.print("Nombre: ");
         nuevoMaestro.setNombre(entrada.nextLine());
-
+        boolean bandera2 = false, bandera = false;
         int idAsignarMaestro;
-
+        
         do{
-            System.err.println("ingrese el id del maestro");
-            idAsignarMaestro = this.decidir();
+            do{
+                System.out.println("introduzca el id: ");;
+                bandera2 = false;
+                idAsignarMaestro = this.decidir();
+                for(Materia materiaBuscarDup : listaMaterias){
+                    if (idAsignarMaestro == materiaBuscarDup.getMaestro().getId()) {
+                        bandera2 = true;
+                    }
+                    if (bandera2) {
+                        System.out.println("\n--Ya existe una profesor con ese id, escriba otro--\n");
+                    }
+                }
+            }while(bandera2);
             if (idAsignarMaestro > 99) {
                 System.out.println("\n--El id del maestro debe de ser menor a 3 digitos--\n");
             }

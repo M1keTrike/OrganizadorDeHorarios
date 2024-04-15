@@ -54,7 +54,7 @@ public class PerfilAdministrador extends Perfil {
 
         
         System.out.println("Ingrese los datos del maestro");
-        nuevaMateria.asignarMaestro();
+        nuevaMateria.asignarMaestro(this.listaMaterias);
         
 
         
@@ -333,9 +333,27 @@ public class PerfilAdministrador extends Perfil {
                             System.out.print("Nombre: ");
                             nuevoNombreM = entrada.nextLine();
                             materia.getMaestro().setNombre(nuevoNombreM);
-                            System.out.println("Introduzca el id ");
-                            nuevoIdM = this.decidir();
-                            materia.getMaestro().setId(nuevoIdM);
+                            boolean bandera2 = false;
+                            do{
+
+                                do{
+                                    System.out.println("introduzca el id: ");;
+                                    bandera2 = false;
+                                    nuevoIdM = this.decidir();
+                                    for(Materia materiaBuscarDup : this.listaMaterias){
+                                        if (nuevoIdM == materiaBuscarDup.getMaestro().getId()) {
+                                            bandera2 = true;
+                                        }
+                                        if (bandera2) {
+                                            System.out.println("\n--Ya existe una profesor con ese id, escriba otro--\n");
+                                        }
+                                    }
+                                }while(bandera2);
+                                if (nuevoIdM > 99) {
+                                    System.out.println("\n--El id del maestro debe de ser menor a 3 digitos--\n");
+                                    materia.getMaestro().setId(nuevoIdM);
+                                }
+                            }while(nuevoIdM > 99);
                             break;
                     
                         default:
