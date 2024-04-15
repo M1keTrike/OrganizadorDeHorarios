@@ -20,7 +20,6 @@ public class Principal {
             eleccion = decidir();
             
         }while(eleccion == 2);
-        
     }
 
 
